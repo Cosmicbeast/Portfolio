@@ -1,0 +1,85 @@
+{
+  "chapters": {
+    "project": {
+      "id": "project",
+      "index": "• 001",
+      "badge": "• DECIMAL CARD",
+      "protagonist": "KPR PROTO-01",
+      "headline": "A FAMILIAR WORLD... SET ON A DIFFERENT PATH.",
+      "description": "Isolated within the New Eden safe zone, you witness humanity struggling to avoid descending into chaos.",
+      "videoLabel": "SEC_VIDEO_1P",
+      "guardianLabel": "• THE KEEP // GUARDIAN"
+    },
+    "keep": {
+      "id": "keep",
+      "index": "• 002",
+      "headline": "YOU ARE A KEEPER: AN AGENT OF POWER AND CHANGE IN THIS WORLD.",
+      "subHeadline": "WHAT WILL YOU DO WITH THIS POWER? WILL YOU CHOOSE TO PROTECT OR DESTROY? TO GIVE OR TO TAKE?",
+      "coordinates": "N 38°31' 14\" / E 120°15' 08\"",
+      "altitude": "ALT 3510 M",
+      "reticleLabel": "• KEEPERS SYMBOL"
+    },
+    "collectibles": {
+      "id": "collectibles",
+      "index": "• 003",
+      "watermark": "10K",
+      "category": "• INITIAL COLLECTION",
+      "headline": "10,000 UNIQUE DIGITAL COLLECTIBLES.",
+      "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent KPR's foundational pillars of evolution, inclusion, and imagination.",
+      "cards": [
+        { "id": "01", "name": "LILAC AURA", "role": "OPERATIVE", "attr": "AURA // FLAME" },
+        { "id": "02", "name": "RESPIRATOR", "role": "VANGUARD", "attr": "GEAR // DATA" },
+        { "id": "03", "name": "CYBER VISOR", "role": "SENTINEL", "attr": "OCULAR // 01" },
+        { "id": "04", "name": "RONIN COLLAR", "role": "INFILTRATOR", "attr": "ARMOR // CARBON" }
+      ]
+    },
+    "factions": {
+      "id": "factions",
+      "citadelBadge": "• FACTIONS",
+      "citadelTitle": "THE FLOATING RING CITADEL",
+      "overlookIndex": "• 002 • FACTIONS",
+      "overlookTagline": "One world, two factions. Divided in belief, united in purpose.",
+      "prompt": "CLICK & HOLD"
+    },
+    "world": {
+      "id": "world",
+      "wordmark": "KEEPERS",
+      "prompt": "What path will you forge as you become the Keeper of your destiny?",
+      "actionLink": "• BECOME A KEEPER",
+      "cards": [
+        { "label": "• THE WORLD", "sub": "TERRAIN // 01" },
+        { "label": "• THE KEEP", "sub": "ENERGY // SPIRE" },
+        { "label": "• FACTION", "sub": "OCULAR // CLOSEUP" }
+      ]
+    },
+    "footer": {
+      "sidebarTelemetry": "// INITIALIZING\nNEW FILES IN DATABASE\nSEC_VIDEO_1P",
+      "columns": [
+        {
+          "title": "• DISCOVER MORE",
+          "links": [
+            { "label": "STORY", "href": "#chapter-project" },
+            { "label": "THE KEEP", "href": "#chapter-keep" },
+            { "label": "FACTIONS", "href": "#chapter-factions" },
+            { "label": "THE WORLD", "href": "#chapter-world" }
+          ]
+        },
+        {
+          "title": "• JOIN THE CONVERSATION",
+          "links": [
+            { "label": "TWITTER / X", "href": "https://twitter.com/kprverse" },
+            { "label": "DISCORD SERVER", "href": "https://discord.gg/kprverse" },
+            { "label": "GITHUB REPO", "href": "https://github.com/Cosmicbeast/Portfolio" }
+          ]
+        },
+        {
+          "title": "• MORE DETAILS",
+          "contactEmail": "CONTACT@COSMICBEAST.IO",
+          "ctaButton": "DOWNLOAD BRAND BOOK"
+        }
+      ],
+      "wordmark": "KPR",
+      "copyright": "© 2026 KPR. ALL RIGHTS RESERVED."
+    }
+  }
+}

@@ -2,16 +2,16 @@
 // Default layout housing the persistent HUD Frame and smooth-scrolling content
 import TheHudFrame from '~/components/hud/TheHudFrame.vue'
 import SmoothScroll from '~/components/layout/SmoothScroll.vue'
+import { useStoryState } from '~/composables/useStoryState'
 
-const activeChapter = ref('project')
-
-const setActiveChapter = (id: string) => {
-  activeChapter.value = id
-}
+const { activeChapter, currentTheme } = useStoryState()
 </script>
 
 <template>
-  <div class="layout-hud-default">
+  <div
+    class="layout-hud-default"
+    :class="[currentTheme === 'dark' ? 'theme-dark' : 'theme-light']"
+  >
     <!-- Persistent Viewport HUD Frame -->
     <TheHudFrame :active-tab="activeChapter" />
 

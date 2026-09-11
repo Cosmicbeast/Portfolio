@@ -6,8 +6,8 @@
 
 html {
   font-size: 62.5%; /* 1rem = 10px */
-  background-color: var(--cl-bg);
-  color: var(--cl-text);
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,8 +17,8 @@ body {
   font-family: var(--font-display);
   font-size: 1.6rem;
   line-height: 1.5;
-  background-color: var(--cl-bg);
-  color: var(--cl-text);
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -46,4 +46,10 @@ a {
 
 ul, ol {
   list-style: none;
+}
+
+/* Accessible high-contrast keyboard focus indicators */
+:focus-visible {
+  outline: 2px solid var(--color-accent-green);
+  outline-offset: 3px;
 }

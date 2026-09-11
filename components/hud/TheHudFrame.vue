@@ -5,12 +5,16 @@ import HudProgressBar from '~/components/hud/HudProgressBar.vue'
 import BtnSignIn from '~/components/ui/BtnSignIn.vue'
 import CrosshairReticle from '~/components/ui/CrosshairReticle.vue'
 import AudioIndicator from '~/components/ui/AudioIndicator.vue'
+import TheMenu from '~/components/nav/TheMenu.vue'
 import navData from '~/data/navigation.json'
+import { useStoryState } from '~/composables/useStoryState'
 
-defineProps<{
+const props = defineProps<{
   activeTab?: string
 }>()
 
+const { activeChapter, currentTheme } = useStoryState()
+const effectiveTab = computed(() => props.activeTab || activeChapter.value)
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
@@ -19,7 +23,16 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="the-hud-frame" aria-hidden="false">
+  <div
+    class="the-hud-frame"
+    :class="[currentTheme === 'dark' ? 'theme-dark' : 'theme-light']"
+    aria-hidden="false"
+  >
+    <!-- Accessible Skip to Main Content Link for Screen Readers & Keyboard Nav -->
+    <a href="#main-content" class="hud-skip-link label-mono">
+      SKIP TO CONTENT ↓
+    </a>
+
     <!-- Outer perimeter HUD border line -->
     <div class="hud-outer-border" aria-hidden="true" />
 
@@ -32,6 +45,8 @@ const toggleMenu = () => {
           class="hud-burger-btn"
           :class="{ 'is-open': isMenuOpen }"
           aria-label="Toggle Navigation"
+          :aria-expanded="isMenuOpen"
+          aria-controls="nav-drawer"
           @click="toggleMenu"
         >
           <span class="burger-line line-1" />
@@ -43,7 +58,7 @@ const toggleMenu = () => {
       <div class="hud-header__center">
         <HudNavTabs
           :tabs="navData.tabs"
-          :active-id="activeTab"
+          :active-id="effectiveTab"
         />
       </div>
 
@@ -68,6 +83,9 @@ const toggleMenu = () => {
         <AudioIndicator :code="navData.hud.audioCode" />
       </div>
     </aside>
+
+    <!-- Fullscreen Mobile Navigation Drawer -->
+    <TheMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
   </div>
 </template>
 
@@ -78,6 +96,24 @@ const toggleMenu = () => {
   z-index: var(--z-hud-frame);
   pointer-events: none;
   transition: var(--transition-theme);
+}
+
+.hud-skip-link {
+  position: absolute;
+  top: -6rem;
+  left: 2rem;
+  padding: 0.8rem 1.6rem;
+  background-color: var(--color-accent-green);
+  color: #000000;
+  font-weight: 700;
+  border-radius: 9999px;
+  z-index: 1000;
+  pointer-events: auto;
+  transition: top var(--transition-fast);
+}
+
+.hud-skip-link:focus {
+  top: 1.2rem;
 }
 
 /* 1px outer frame rounded border */

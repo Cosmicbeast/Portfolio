@@ -1,14 +1,12 @@
 <script setup lang="ts">
 // Bottom-left audio indicator [01] with animated visualizer bars
+import { useAudio } from '~/composables/useAudio'
+
 defineProps<{
   code?: string
 }>()
 
-const isPlaying = ref(false)
-
-const toggle = () => {
-  isPlaying.value = !isPlaying.value
-}
+const { isPlaying, toggleAudio } = useAudio()
 </script>
 
 <template>
@@ -17,7 +15,7 @@ const toggle = () => {
     class="audio-indicator"
     :class="{ 'is-active': isPlaying }"
     aria-label="Toggle Ambient Audio"
-    @click="toggle"
+    @click="toggleAudio"
   >
     <span class="audio-bars" aria-hidden="true">
       <span class="bar bar-1" />

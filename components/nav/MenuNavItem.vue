@@ -37,20 +37,21 @@ const emit = defineEmits<{
   justify-content: space-between;
   width: 100%;
   padding: 1.6rem 0;
-  border-bottom: 1px solid var(--cl-line-light);
-  color: var(--cl-text);
+  border-bottom: 1px solid var(--theme-lines);
+  color: #FFFFFF;
   text-align: left;
+  cursor: pointer;
   transition: padding-left var(--transition-fast), color var(--transition-fast);
 }
 
 .menu-item__btn:hover {
-  color: var(--cl-accent);
+  color: var(--color-accent-green);
   padding-left: 1.2rem;
 }
 
 .menu-item__index {
   font-size: 1.3rem;
-  color: var(--cl-muted);
+  color: var(--theme-text-muted);
   min-width: 4rem;
 }
 

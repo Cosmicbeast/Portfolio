@@ -41,4 +41,12 @@ defineProps<{
 .btn-signin:active {
   transform: scale(0.97);
 }
+
+@media (max-width: 768px) {
+  .btn-signin {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.0rem;
+    letter-spacing: 0.08em;
+  }
+}
 </style>

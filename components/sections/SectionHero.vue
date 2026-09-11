@@ -1,147 +1,269 @@
 <script setup lang="ts">
-// SectionHero component - cinematic full-viewport hero section with ScrambleText and CTAs
-import ScrambleText from '~/components/animation/ScrambleText.vue'
-import BtnMain from '~/components/ui/BtnMain.vue'
-import { useLenis } from '~/composables/useLenis'
+// SectionHero: Chapter 01 Hero Genesis stage matching refer.mp4 reference recording
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import FolderTabCard from '~/components/cards/FolderTabCard.vue'
 
-const { scrollTo } = useLenis()
+const heroStageRef = ref<HTMLElement | null>(null)
+const bgLayerRef = ref<HTMLElement | null>(null)
+const centerpieceRef = ref<HTMLElement | null>(null)
+let ctx: gsap.Context | null = null
+
+onMounted(() => {
+  if (!import.meta.client) return
+
+  ctx = gsap.context(() => {
+    const tl = gsap.timeline({
+      defaults: { ease: 'power3.out' }
+    })
+
+    // Layer 1: Global HUD Viewport Frame & Outer Border
+    tl.fromTo(
+      '.hud-outer-border',
+      { opacity: 0, scale: 0.985 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' },
+      0
+    )
+
+    // Layer 2: Header Divider Line and Progress Track
+    tl.fromTo(
+      '.hud-header',
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+      0.15
+    )
+
+    tl.fromTo(
+      '.hud-progress-track',
+      { scaleX: 0, transformOrigin: 'left center' },
+      { scaleX: 1, duration: 0.8, ease: 'power3.inOut' },
+      0.25
+    )
+
+    // Layer 3: Top Navigation Items & Hamburger Icon
+    tl.fromTo(
+      '.hud-burger-btn',
+      { opacity: 0, x: -16 },
+      { opacity: 1, x: 0, duration: 0.5 },
+      0.3
+    )
+
+    tl.fromTo(
+      '.tab-item',
+      { opacity: 0, y: -12 },
+      { opacity: 1, y: 0, stagger: 0.06, duration: 0.5 },
+      0.35
+    )
+
+    tl.fromTo(
+      '.btn-signin',
+      { opacity: 0, scale: 0.85 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' },
+      0.4
+    )
+
+    // Layer 4: Left HUD Rail (Crosshair Reticle & Audio Indicator)
+    tl.fromTo(
+      '.hud-left-rail__reticle',
+      { opacity: 0, scale: 0.4, rotation: -90 },
+      { opacity: 0.85, scale: 1, rotation: 0, duration: 0.8, ease: 'back.out(1.4)' },
+      0.45
+    )
+
+    tl.fromTo(
+      '.hud-left-rail__bottom',
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.6 },
+      0.55
+    )
+
+    // Layer 5: Hero Atmosphere Background Layer
+    if (bgLayerRef.value) {
+      tl.fromTo(
+        bgLayerRef.value,
+        { opacity: 0, scale: 1.05 },
+        { opacity: 1, scale: 1, duration: 1.4, ease: 'power2.out' },
+        0.2
+      )
+    }
+
+    // Layer 6: Centerpiece Badge and Protagonist Folder-Tab Card
+    tl.fromTo(
+      '.stage-hero .card-badge',
+      { opacity: 0, y: -14 },
+      { opacity: 0.85, y: 0, duration: 0.6 },
+      0.6
+    )
+
+    tl.fromTo(
+      '.stage-hero .card-shape-wrapper',
+      { opacity: 0, y: 70, scale: 0.94 },
+      { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'power3.out' },
+      0.65
+    )
+
+    tl.fromTo(
+      '.stage-hero .card-hero-image',
+      { scale: 1.12 },
+      { scale: 1.0, duration: 1.3, ease: 'power2.out' },
+      0.65
+    )
+
+    // Cinematic Scroll-Triggered Parallax Scrub for Hero Exit
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!prefersReducedMotion && heroStageRef.value) {
+      gsap.to('.stage-hero__centerpiece', {
+        scrollTrigger: {
+          trigger: heroStageRef.value,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        },
+        y: 60,
+        scale: 0.88,
+        opacity: 0.25,
+        ease: 'power2.inOut'
+      })
+
+      gsap.to('.hero-bg-mist', {
+        scrollTrigger: {
+          trigger: heroStageRef.value,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.6
+        },
+        opacity: 1,
+        y: -30
+      })
+    }
+  }, heroStageRef.value ?? undefined)
+})
+
+onUnmounted(() => {
+  ctx?.revert()
+})
 </script>
 
 <template>
-  <section id="hero" class="section-hero flex flex-col justify-center items-center">
-    <div class="site-container hero-container flex flex-col items-center text-center">
-      <!-- Status Badge -->
-      <div class="hero-badge label-mono">
-        <span class="hero-badge__dot" />
-        <ScrambleText text="CORE SYSTEM // ONLINE: READY FOR DEPLOYMENT" :delay="300" />
-      </div>
+  <section
+    id="chapter-project"
+    ref="heroStageRef"
+    class="stage-hero"
+    aria-label="Chapter 01: Hero Genesis Stage"
+  >
+    <!-- Atmospheric Painted Lavender Sky & Distant Mountain Horizon -->
+    <div
+      ref="bgLayerRef"
+      class="hero-bg-layer"
+      aria-hidden="true"
+    >
+      <div class="hero-bg-gradient" />
+      <img
+        src="/images/bg-lavender-sky.jpg"
+        alt=""
+        class="hero-bg-image"
+        loading="eager"
+      />
+      <!-- Subtle Atmospheric Mist Overlay -->
+      <div class="hero-bg-mist" />
+    </div>
 
-      <!-- Main Headline -->
-      <h1 class="hero-title">
-        <ScrambleText text="COSMICBEAST" :delay="600" />
-      </h1>
-
-      <!-- Subheadline -->
-      <p class="hero-subtitle font-mono">
-        CREATIVE DEVELOPER & ARCHITECT // BUILDING IMMERSIVE 3D WEB EXPERIENCES
-      </p>
-
-      <!-- Description paragraph -->
-      <p class="hero-description">
-        Crafting next-generation digital interfaces, high-performance WebGL 3D systems,
-        and cinematic reactive architectures inspired by futuristic cyberpunk computing.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="hero-actions flex items-center justify-center">
-        <BtnMain
-          theme="accent"
-          size="lg"
-          @click="scrollTo('#projects')"
-        >
-          EXPLORE PROJECTS ↓
-        </BtnMain>
-        <BtnMain
-          theme="outline"
-          size="lg"
-          @click="scrollTo('#contact')"
-        >
-          INITIATE CONTACT →
-        </BtnMain>
-      </div>
-
-      <!-- Scroll down indicator -->
-      <div class="hero-scroll-cue flex flex-col items-center">
-        <span class="label-mono">DISCOVER DATASTREAM</span>
-        <div class="hero-scroll-line" />
-      </div>
+    <!-- Centered Hero Centerpiece Stage -->
+    <div ref="centerpieceRef" class="stage-hero__centerpiece">
+      <FolderTabCard
+        badge="• DECIMAL CARD"
+        image="/images/hero-protagonist.jpg"
+        alt="KPR Protagonist with Cyan Visor and Holographic Wolf Spirit"
+        :interactive="true"
+      />
     </div>
   </section>
 </template>
 
 <style scoped>
-.section-hero {
+.stage-hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: calc(var(--nav-height) + 6rem);
-  padding-bottom: 6rem;
+  width: 100%;
+  height: 100vh;
+  min-height: 64.0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--menu-height) + 2rem) 2rem 4rem;
+  background-color: var(--color-bg-lavender);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Background Atmosphere System */
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   overflow: hidden;
 }
 
-.hero-container {
-  position: relative;
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(234, 230, 248, 0.4) 0%,
+    rgba(221, 216, 245, 0.85) 70%,
+    rgba(206, 199, 238, 0.95) 100%
+  );
+  z-index: 1;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.55;
+  filter: saturate(0.9) contrast(1.05);
+}
+
+.hero-bg-mist {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28vh;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(234, 230, 248, 0.65) 60%,
+    rgba(234, 230, 248, 0.95) 100%
+  );
   z-index: 2;
-  max-width: 100rem;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.6rem 1.6rem;
-  background: rgba(192, 251, 80, 0.08);
-  border: 1px solid rgba(192, 251, 80, 0.3);
-  border-radius: 20px;
-  color: var(--cl-accent);
-  margin-bottom: 3rem;
-  backdrop-filter: blur(8px);
-}
-
-.hero-badge__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--cl-accent);
-  box-shadow: 0 0 8px var(--cl-accent);
-}
-
-.hero-title {
-  margin-bottom: 1.6rem;
-  letter-spacing: -0.04em;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-}
-
-.hero-subtitle {
-  font-size: clamp(1.4rem, 2vw, 2.2rem);
-  color: var(--cl-accent);
-  letter-spacing: 0.15em;
-  margin-bottom: 2.4rem;
-}
-
-.hero-description {
-  max-width: 64rem;
-  margin-bottom: 4rem;
-  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
-}
-
-.hero-actions {
+/* Centerpiece Container */
+.stage-hero__centerpiece {
+  position: relative;
+  z-index: 5;
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 6rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.hero-scroll-cue {
-  gap: 1rem;
-  opacity: 0.7;
-  transition: opacity var(--transition-fast);
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stage-hero {
+    height: 100vh;
+    padding-top: calc(var(--menu-height) + 1.6rem);
+    padding-bottom: 3rem;
+  }
 
-.hero-scroll-cue:hover {
-  opacity: 1;
-}
-
-.hero-scroll-line {
-  width: 1px;
-  height: 4rem;
-  background: linear-gradient(to bottom, var(--cl-accent), transparent);
-  animation: scroll-pulse 2s infinite;
-}
-
-@keyframes scroll-pulse {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  50.1% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+  .hero-bottom-cue {
+    display: none;
+  }
 }
 </style>

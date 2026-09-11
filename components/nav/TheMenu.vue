@@ -14,11 +14,11 @@ const emit = defineEmits<{
 const { scrollTo } = useLenis()
 
 const menuItems = [
-  { index: '01', label: 'ABOUT', target: '#about' },
-  { index: '02', label: 'PROJECTS', target: '#projects' },
-  { index: '03', label: 'EXPERIENCE', target: '#experience' },
-  { index: '04', label: 'SKILLS', target: '#skills' },
-  { index: '05', label: 'CONTACT', target: '#contact' }
+  { index: '01', label: 'PROJECT // GENESIS', target: '#chapter-project' },
+  { index: '02', label: 'THE KEEP // TELEMETRY', target: '#chapter-keep' },
+  { index: '03', label: 'COLLECTIBLES // 10K', target: '#chapter-collectibles' },
+  { index: '04', label: 'FACTIONS // OVERLOOK', target: '#chapter-factions' },
+  { index: '05', label: 'THE WORLD // KEEPERS', target: '#chapter-world' }
 ]
 
 const handleSelect = (target: string) => {
@@ -51,6 +51,7 @@ onUnmounted(() => {
   <Transition name="menu-fade">
     <div
       v-if="isOpen"
+      id="nav-drawer"
       class="the-menu"
       role="dialog"
       aria-modal="true"
@@ -125,7 +126,7 @@ onUnmounted(() => {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: var(--z-menu);
+  z-index: var(--z-menu-drawer);
   display: flex;
   justify-content: flex-end;
   pointer-events: auto;
@@ -145,7 +146,7 @@ onUnmounted(() => {
   max-width: 68rem;
   height: 100%;
   background: rgba(10, 10, 10, 0.95);
-  border-left: 1px solid var(--cl-line-light);
+  border-left: 1px solid var(--theme-lines);
   padding: clamp(2.4rem, 5vw, 6rem);
   display: flex;
   flex-direction: column;
@@ -156,16 +157,17 @@ onUnmounted(() => {
 
 .the-menu__header {
   padding-bottom: 2rem;
-  border-bottom: 1px dashed var(--cl-line-light);
+  border-bottom: 1px dashed var(--theme-lines);
 }
 
 .the-menu__close-btn {
-  color: var(--cl-text-muted);
+  color: var(--theme-text-muted);
+  cursor: pointer;
   transition: color var(--transition-fast);
 }
 
 .the-menu__close-btn:hover {
-  color: var(--cl-accent);
+  color: var(--color-accent-green);
 }
 
 .the-menu__list {
@@ -179,7 +181,7 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 2rem;
   padding-top: 2.4rem;
-  border-top: 1px dashed var(--cl-line-light);
+  border-top: 1px dashed var(--theme-lines);
 }
 
 .the-menu__meta {
@@ -195,18 +197,18 @@ onUnmounted(() => {
 }
 
 .the-menu__social-link {
-  color: var(--cl-text-muted);
+  color: var(--theme-text-muted);
   transition: color var(--transition-fast);
 }
 
 .the-menu__social-link:hover {
-  color: var(--cl-accent);
+  color: var(--color-accent-green);
 }
 
 /* Transitions */
 .menu-fade-enter-active,
 .menu-fade-leave-active {
-  transition: opacity 0.35s ease, transform 0.35s var(--ease-out-expo);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-cinematic);
 }
 
 .menu-fade-enter-from,
