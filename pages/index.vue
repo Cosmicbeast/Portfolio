@@ -37,7 +37,7 @@ import TheFooterMonoliths from '~/components/layout/TheFooterMonoliths.vue'
     <!-- Chapter 07 & 08: Brutalist KEEPERS Watermark & Triptych Climax -->
     <SectionWorldKeepers />
 
-    <!-- Chapter 09: 3 Black Monolith Columns and KPR Exit Footer -->
+    <!-- Chapter 09: 3 Black Monolith Columns and ANJISHNU Exit Footer -->
     <TheFooterMonoliths />
   </div>
 </template>

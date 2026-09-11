@@ -150,7 +150,7 @@ onUnmounted(() => {
       <FolderTabCard
         badge="• DECIMAL CARD"
         image="/images/hero-protagonist.jpg"
-        alt="KPR Protagonist with Cyan Visor and Holographic Wolf Spirit"
+        alt="Anjishnu Protagonist with Cyan Visor and Holographic Wolf Spirit"
         :interactive="true"
       />
     </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// TheFooterMonoliths: Chapter 09 Rising Monolithic Exit Footer with Monumental KPR Wordmark
+// TheFooterMonoliths: Chapter 09 Rising Monolithic Exit Footer with Monumental ANJISHNU Wordmark
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useStoryState } from '~/composables/useStoryState'
@@ -99,7 +99,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Monumental Brutalist KPR Wordmark -->
+      <!-- Monumental Brutalist ANJISHNU Wordmark -->
       <div class="footer-wordmark-wrapper" aria-hidden="true">
         <span class="footer-wordmark">{{ footer.wordmark }}</span>
       </div>
@@ -255,7 +255,7 @@ onUnmounted(() => {
   background-color: var(--color-accent-green);
 }
 
-/* Monumental KPR Wordmark */
+/* Monumental ANJISHNU Wordmark */
 .footer-wordmark-wrapper {
   width: 100%;
   text-align: center;
@@ -264,12 +264,14 @@ onUnmounted(() => {
 
 .footer-wordmark {
   font-family: var(--font-display);
-  font-size: clamp(12.0rem, 28vw, 44.0rem);
+  font-size: clamp(6.0rem, 13.5vw, 21.0rem);
   font-weight: 700;
-  line-height: 0.75;
-  letter-spacing: -0.06em;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
   color: #FFFFFF;
   text-transform: uppercase;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .footer-bottom-bar {

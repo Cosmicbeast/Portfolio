@@ -4,7 +4,7 @@
       "id": "project",
       "index": "• 001",
       "badge": "• DECIMAL CARD",
-      "protagonist": "KPR PROTO-01",
+      "protagonist": "ANJISHNU PROTO-01",
       "headline": "A FAMILIAR WORLD... SET ON A DIFFERENT PATH.",
       "description": "Isolated within the New Eden safe zone, you witness humanity struggling to avoid descending into chaos.",
       "videoLabel": "SEC_VIDEO_1P",
@@ -25,7 +25,7 @@
       "watermark": "10K",
       "category": "• INITIAL COLLECTION",
       "headline": "10,000 UNIQUE DIGITAL COLLECTIBLES.",
-      "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent KPR's foundational pillars of evolution, inclusion, and imagination.",
+      "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent Anjishnu's foundational pillars of evolution, inclusion, and imagination.",
       "cards": [
         { "id": "01", "name": "LILAC AURA", "role": "OPERATIVE", "attr": "AURA // FLAME" },
         { "id": "02", "name": "RESPIRATOR", "role": "VANGUARD", "attr": "GEAR // DATA" },
@@ -67,8 +67,8 @@
         {
           "title": "• JOIN THE CONVERSATION",
           "links": [
-            { "label": "TWITTER / X", "href": "https://twitter.com/kprverse" },
-            { "label": "DISCORD SERVER", "href": "https://discord.gg/kprverse" },
+            { "label": "TWITTER / X", "href": "https://twitter.com/anjishnu" },
+            { "label": "DISCORD SERVER", "href": "https://discord.gg/anjishnu" },
             { "label": "GITHUB REPO", "href": "https://github.com/Cosmicbeast/Portfolio" }
           ]
         },
@@ -78,8 +78,8 @@
           "ctaButton": "DOWNLOAD BRAND BOOK"
         }
       ],
-      "wordmark": "KPR",
-      "copyright": "© 2026 KPR. ALL RIGHTS RESERVED."
+      "wordmark": "ANJISHNU",
+      "copyright": "© 2026 ANJISHNU. ALL RIGHTS RESERVED."
     }
   }
 }

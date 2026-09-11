@@ -1,8 +1,8 @@
 {
   "project": {
-    "name": "KPRverse Story Experience",
+    "name": "Anjishnu Story Experience",
     "version": "1.0.0",
-    "description": "Production-ready reverse-engineered specification of the KPRverse story experience derived from refer.mp4 reference recording.",
+    "description": "Production-ready reverse-engineered specification of the Anjishnu story experience derived from refer.mp4 reference recording.",
     "theme": "Cyberpunk Cinematic Editorial Hybrid",
     "targetFps": 60,
     "viewportStandard": {
@@ -169,7 +169,7 @@
   "pages": [
     {
       "id": "page_story_home",
-      "title": "KPR | Story",
+      "title": "Anjishnu | Story",
       "slug": "/",
       "layout": "LayoutHudDefault",
       "sections": [
@@ -199,7 +199,7 @@
       "content": {
         "badge": "• PROJECT",
         "cardMetadata": "• DECIMAL CARD",
-        "protagonistName": "KPR PROTO-01"
+        "protagonistName": "ANJISHNU PROTO-01"
       },
       "typography": {
         "navLabel": "labelMono"
@@ -417,7 +417,7 @@
         "watermarkText": "10K",
         "headline": "10,000 UNIQUE DIGITAL COLLECTIBLES.",
         "categoryLabel": "• INITIAL COLLECTION",
-        "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent KPR's foundational pillars of evolution, inclusion, and imagination.",
+        "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent Anjishnu's foundational pillars of evolution, inclusion, and imagination.",
         "navChevrons": { "prev": "◄", "next": "►" }
       },
       "typography": {
@@ -630,7 +630,7 @@
       "id": "section_footer_monoliths",
       "type": "monolithExitFooter",
       "order": 9,
-      "purpose": "Conclude the page with 3 rising black monolithic columns, directory links with hover fills, and monumental KPR wordmark.",
+      "purpose": "Conclude the page with 3 rising black monolithic columns, directory links with hover fills, and monumental ANJISHNU wordmark.",
       "background": {
         "color": "#000000",
         "type": "solidBlack"
@@ -654,20 +654,20 @@
             "id": "col_community",
             "title": "• JOIN THE CONVERSATION",
             "links": [
-              { "label": "TWITTER", "href": "https://twitter.com/kprverse" },
-              { "label": "DISCORD", "href": "https://discord.gg/kprverse" }
+              { "label": "TWITTER", "href": "https://twitter.com/anjishnu" },
+              { "label": "DISCORD", "href": "https://discord.gg/anjishnu" }
             ]
           },
           {
             "id": "col_details",
             "title": "• MORE DETAILS",
-            "contactEmail": "HELLO@KPRVERSE.COM",
+            "contactEmail": "CONTACT@COSMICBEAST.IO",
             "ctaButton": "DOWNLOAD BRAND BOOK"
           }
         ],
-        "wordmark": "KPR",
+        "wordmark": "ANJISHNU",
         "legal": ["PRIVACY POLICY", "TERMS OF SERVICE", "LEGAL LICENSE"],
-        "copyright": "© 2022 KPR. ALL RIGHTS RESERVED."
+        "copyright": "© 2026 ANJISHNU. ALL RIGHTS RESERVED."
       },
       "typography": {
         "columnTitle": "labelMono",
@@ -700,7 +700,7 @@
           "wordmarkHeight": "18vw"
         }
       },
-      "dependencies": ["MonolithColumn", "LinkHoverFill", "MegaWordmarkKPR"]
+      "dependencies": ["MonolithColumn", "LinkHoverFill", "MegaWordmarkAnjishnu"]
     }
   ],
   "components": [
@@ -763,7 +763,7 @@
     {
       "name": "MegaWordmark",
       "path": "components/ui/MegaWordmark.vue",
-      "role": "Full-width brutalist SVG letterforms (KEEPERS, KPR)",
+      "role": "Full-width brutalist SVG letterforms (KEEPERS, ANJISHNU)",
       "props": { "word": "string", "color": "string" }
     }
   ],
@@ -1220,7 +1220,7 @@
     }
   },
   "content": {
-    "siteTitle": "KPR | Story",
+    "siteTitle": "Anjishnu | Story",
     "metaDescription": "Enter New Eden. A cinematic world of Keepers, digital collectibles, and opposing factions struggling for the future of humanity.",
     "chapters": [
       { "id": "project", "number": "001", "name": "PROJECT", "headline": "A FAMILIAR WORLD... SET ON A DIFFERENT PATH." },
@@ -1230,8 +1230,8 @@
       { "id": "world", "number": "004", "name": "THE WORLD", "headline": "What path will you forge as you become the Keeper of your destiny?" }
     ],
     "footer": {
-      "wordmark": "KPR",
-      "copyright": "© 2022 KPR. ALL RIGHTS RESERVED."
+      "wordmark": "ANJISHNU",
+      "copyright": "© 2026 ANJISHNU. ALL RIGHTS RESERVED."
     }
   },
   "routing": {
