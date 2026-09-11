@@ -1,0 +1,1254 @@
+{
+  "project": {
+    "name": "KPRverse Story Experience",
+    "version": "1.0.0",
+    "description": "Production-ready reverse-engineered specification of the KPRverse story experience derived from refer.mp4 reference recording.",
+    "theme": "Cyberpunk Cinematic Editorial Hybrid",
+    "targetFps": 60,
+    "viewportStandard": {
+      "desktop": { "width": 1600, "height": 850 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "designSystem": {
+    "units": {
+      "baseFontSize": "62.5%",
+      "rootRem": "1rem = 10px"
+    },
+    "tokens": {
+      "menuPad": "2.0rem",
+      "menuHeight": "5.6rem",
+      "menuWidth": "6.7rem",
+      "menuRadius": "2.0rem",
+      "lineThickness": "1px",
+      "contentMaxWidth": "144.0rem"
+    },
+    "borderRadius": {
+      "none": "0px",
+      "xs": "0.26rem",
+      "sm": "0.5rem",
+      "md": "0.8rem",
+      "lg": "1.4rem",
+      "xl": "2.0rem",
+      "full": "9999px"
+    },
+    "spacingScale": {
+      "1": "0.4rem",
+      "2": "0.8rem",
+      "3": "1.2rem",
+      "4": "1.6rem",
+      "5": "2.0rem",
+      "6": "2.4rem",
+      "8": "3.2rem",
+      "10": "4.0rem",
+      "12": "4.8rem",
+      "16": "6.4rem",
+      "20": "8.0rem",
+      "24": "9.6rem",
+      "32": "12.8rem"
+    },
+    "containerWidths": {
+      "sm": "64.0rem",
+      "md": "96.0rem",
+      "lg": "120.0rem",
+      "xl": "144.0rem",
+      "full": "100%"
+    },
+    "zIndexLayers": {
+      "canvas": 0,
+      "content": 1,
+      "overlays": 10,
+      "hudFrame": 50,
+      "menuDrawer": 60,
+      "modal": 70,
+      "preloader": 100
+    },
+    "transitionDefaults": {
+      "fast": "0.2s ease",
+      "normal": "0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+      "slow": "0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+      "linear": "0.1s linear"
+    }
+  },
+  "colors": {
+    "primary": {
+      "white": "#FFFFFF",
+      "black": "#000000"
+    },
+    "secondary": {
+      "slateDark": "#0A0A0A",
+      "slateMedium": "#141414",
+      "slateLight": "#222222",
+      "charcoal": "#333333"
+    },
+    "background": {
+      "canvasLight": "#FFFFFF",
+      "canvasDark": "#000000",
+      "canvasLavender": "#DDD8F5",
+      "canvasLavenderLight": "#EAE6F8",
+      "canvasSunset": "#C88470",
+      "canvasSunsetSecondary": "#936068"
+    },
+    "text": {
+      "primaryLight": "#000000",
+      "primaryDark": "#FFFFFF",
+      "mutedLight": "rgba(0, 0, 0, 0.45)",
+      "mutedDark": "rgba(255, 255, 255, 0.45)",
+      "disabled": "rgba(255, 255, 255, 0.2)"
+    },
+    "accent": {
+      "neonGreen": "#C0FB50",
+      "neonBlue": "#8CA6FF",
+      "lavender": "#B39DDB",
+      "gold": "#FFD54F"
+    },
+    "lines": {
+      "darkOnLight": "rgba(0, 0, 0, 0.12)",
+      "lightOnDark": "rgba(255, 255, 255, 0.15)",
+      "activeLine": "#C0FB50"
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "display": "Space Grotesk, ABCWhytePlus, sans-serif",
+      "mono": "JetBrains Mono, IBMPlexMono, monospace",
+      "body": "Space Grotesk, sans-serif"
+    },
+    "scale": {
+      "megaWatermark": { "fontSize": "clamp(8.0rem, 16vw, 24.0rem)", "lineHeight": "0.8", "letterSpacing": "-0.06em", "fontWeight": 700 },
+      "displayH1": { "fontSize": "clamp(3.6rem, 6.5vw, 7.2rem)", "lineHeight": "0.9", "letterSpacing": "-0.05em", "fontWeight": 700 },
+      "displayH2": { "fontSize": "clamp(2.8rem, 4.5vw, 4.8rem)", "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": 700 },
+      "sectionH3": { "fontSize": "clamp(2.0rem, 2.8vw, 3.2rem)", "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": 600 },
+      "bodyLead": { "fontSize": "clamp(1.6rem, 2.0vw, 2.2rem)", "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": 400 },
+      "bodyRegular": { "fontSize": "clamp(1.4rem, 1.6vw, 1.6rem)", "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": 400 },
+      "labelMono": { "fontSize": "1.1rem", "lineHeight": "1.0", "letterSpacing": "0.12em", "fontWeight": 500, "textTransform": "uppercase" },
+      "telemetryMono": { "fontSize": "0.9rem", "lineHeight": "1.0", "letterSpacing": "0.18em", "fontWeight": 400, "textTransform": "uppercase" }
+    }
+  },
+  "navigation": {
+    "hudFrame": {
+      "inset": "var(--menu-pad)",
+      "borderThickness": "1px",
+      "borderColor": "var(--color-lines)"
+    },
+    "header": {
+      "height": "var(--menu-height)",
+      "left": {
+        "width": "var(--menu-width)",
+        "component": "BtnBurger",
+        "icon": "icon_burger_2bar"
+      },
+      "center": {
+        "component": "HudNavTabs",
+        "tabs": [
+          { "id": "project", "label": "PROJECT", "target": "#chapter-project", "order": 1 },
+          { "id": "keep", "label": "THE KEEP", "target": "#chapter-keep", "order": 2 },
+          { "id": "factions", "label": "FACTIONS", "target": "#chapter-factions", "order": 3 },
+          { "id": "world", "label": "THE WORLD", "target": "#chapter-world", "order": 4 }
+        ]
+      },
+      "right": {
+        "component": "BtnAuth",
+        "label": "SIGN IN",
+        "variant": "pillLight"
+      }
+    },
+    "progressBar": {
+      "height": "1px",
+      "position": "bottomOfHeader",
+      "color": "var(--color-text-primary)"
+    },
+    "sidebarRail": {
+      "width": "var(--menu-width)",
+      "elements": [
+        { "type": "crosshairReticle", "position": "centerVertical", "icon": "icon_crosshair_diamond" },
+        { "type": "audioVisualizer", "position": "bottomLeft", "bars": 5, "label": "[01]" }
+      ]
+    }
+  },
+  "pages": [
+    {
+      "id": "page_story_home",
+      "title": "KPR | Story",
+      "slug": "/",
+      "layout": "LayoutHudDefault",
+      "sections": [
+        "section_hero_genesis",
+        "section_intro_split",
+        "section_keep_telemetry",
+        "section_matrix_wipe",
+        "section_collectibles_carousel",
+        "section_factions_citadel",
+        "section_factions_overlook",
+        "section_world_keepers",
+        "section_footer_monoliths"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "section_hero_genesis",
+      "type": "heroPinnedStage",
+      "order": 1,
+      "purpose": "First impression presenting the primary cyberpunk protagonist with cybernetic implants and celestial aura in a branded folder-tab card.",
+      "background": {
+        "color": "#EAE6F8",
+        "type": "paintedSkyGradient",
+        "assetRef": "asset_bg_lavender_sky"
+      },
+      "content": {
+        "badge": "• PROJECT",
+        "cardMetadata": "• DECIMAL CARD",
+        "protagonistName": "KPR PROTO-01"
+      },
+      "typography": {
+        "navLabel": "labelMono"
+      },
+      "images": ["asset_hero_protagonist_card"],
+      "layout": {
+        "display": "flex",
+        "height": "100vh",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "pin": true
+      },
+      "dimensions": {
+        "cardWidthDesktop": "48.0rem",
+        "cardHeightDesktop": "60.0rem",
+        "cardWidthMobile": "88vw",
+        "cardHeightMobile": "52.0rem"
+      },
+      "alignment": "center",
+      "spacing": {
+        "padding": "var(--menu-pad)"
+      },
+      "animation": {
+        "entry": "anim_hero_card_fade_in",
+        "scrollScrub": "anim_hero_card_shrink_and_dock"
+      },
+      "scrollBehavior": {
+        "pinned": true,
+        "scrubDuration": "100vh"
+      },
+      "interactions": [
+        { "type": "mouseParallax", "target": "asset_hero_protagonist_card", "factor": 0.04 }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "scaleCard": 0.85,
+          "repositionOffset": "top"
+        }
+      },
+      "dependencies": ["TheHudFrame", "HeroCard", "useLenis"]
+    },
+    {
+      "id": "section_intro_split",
+      "type": "asymmetricThreeColumn",
+      "order": 2,
+      "purpose": "Introduce the narrative context of New Eden safe zone with a multi-layered 3-column asymmetric layout.",
+      "background": {
+        "color": "#FFFFFF",
+        "type": "solid"
+      },
+      "content": {
+        "indexLabel": "• 001",
+        "headline": "A FAMILIAR WORLD... SET ON A DIFFERENT PATH.",
+        "description": "Isolated within the New Eden safe zone, you witness humanity struggling to avoid descending into chaos.",
+        "videoLabel": "SEC_VIDEO_1P",
+        "centerCardLabel": "• DECIMAL CARD",
+        "rightCardLabel": "• SPIRE GUARDIAN"
+      },
+      "typography": {
+        "index": "labelMono",
+        "headline": "displayH1",
+        "body": "bodyRegular"
+      },
+      "images": [
+        "asset_hero_protagonist_card",
+        "asset_video_thumbnail_safezone",
+        "asset_card_spire_warrior"
+      ],
+      "layout": {
+        "display": "grid",
+        "gridColumnsDesktop": "1.2fr 1fr 1fr",
+        "gridColumnsMobile": "1fr",
+        "minHeight": "100vh",
+        "alignItems": "center"
+      },
+      "dimensions": {
+        "videoThumbnailWidth": "16.0rem",
+        "videoThumbnailHeight": "10.0rem",
+        "spireCardHeight": "68.0rem"
+      },
+      "alignment": "left",
+      "spacing": {
+        "paddingTop": "12.0rem",
+        "paddingBottom": "12.0rem",
+        "columnGap": "4.8rem"
+      },
+      "animation": {
+        "scrollScrub": "anim_intro_columns_stagger_enter"
+      },
+      "scrollBehavior": {
+        "pinned": false
+      },
+      "interactions": [
+        { "type": "hoverTilt", "target": "asset_card_spire_warrior", "maxAngle": 4 }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "stackOrder": ["headline", "centerCard", "videoThumbnail", "spireCard"]
+        }
+      },
+      "dependencies": ["VideoThumbnail", "PerspectiveCard", "FolderTabCard"]
+    },
+    {
+      "id": "section_keep_telemetry",
+      "type": "panoramicTelemetryStage",
+      "order": 3,
+      "purpose": "Immerse user in the vast scale of The Keep with mountain landscape, philosophical inquiry, and live technical coordinates.",
+      "background": {
+        "color": "#C88470",
+        "type": "paintedSunsetMountains",
+        "assetRef": "asset_bg_sunset_vista"
+      },
+      "content": {
+        "indexLabel": "• 002",
+        "headline": "YOU ARE A KEEPER: AN AGENT OF POWER AND CHANGE IN THIS WORLD.",
+        "subHeadline": "WHAT WILL YOU DO WITH THIS POWER? WILL YOU CHOOSE TO PROTECT OR DESTROY? TO GIVE OR TO TAKE?",
+        "coordinates": "N 38°31' 14\" / E 120°15' 08\"",
+        "altitude": "ALT 3510 M",
+        "reticleLabel": "• KEEPERS SYMBOL"
+      },
+      "typography": {
+        "index": "labelMono",
+        "headline": "displayH1",
+        "subHeadline": "sectionH3",
+        "telemetry": "telemetryMono"
+      },
+      "images": [
+        "asset_drone_aircraft",
+        "asset_wireframe_terrain_mesh"
+      ],
+      "layout": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "height": "160vh",
+        "pin": true
+      },
+      "dimensions": {
+        "terrainMeshWidth": "32.0rem",
+        "terrainMeshHeight": "14.0rem"
+      },
+      "alignment": "left",
+      "spacing": {
+        "padding": "var(--menu-pad)"
+      },
+      "animation": {
+        "scrollScrub": "anim_telemetry_narrative_scrub",
+        "continuous": "anim_aircraft_flight_path"
+      },
+      "scrollBehavior": {
+        "pinned": true,
+        "scrubDuration": "160vh"
+      },
+      "interactions": [
+        { "type": "radarSweep", "target": "asset_wireframe_terrain_mesh" }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "hideTerrainMesh": true,
+          "repositionCoordinates": "topRight"
+        }
+      },
+      "dependencies": ["TelemetryCoordinates", "TerrainMeshGraphic", "FlightDrone"]
+    },
+    {
+      "id": "section_matrix_wipe",
+      "type": "graphicCurtainTransition",
+      "order": 4,
+      "purpose": "A theatrical visual bridge between narrative lore and the digital collectibles chapter via a vertical capsule matrix wipe.",
+      "background": {
+        "color": "transparent",
+        "type": "overlayCurtain"
+      },
+      "content": {},
+      "typography": {},
+      "images": [],
+      "layout": {
+        "display": "grid",
+        "gridColumns": "repeat(8, 1fr)",
+        "height": "100vh",
+        "overflow": "hidden"
+      },
+      "dimensions": {
+        "capsuleWidth": "8.0rem",
+        "capsuleHeight": "18.0rem"
+      },
+      "alignment": "center",
+      "spacing": { "gap": "1.0rem" },
+      "animation": {
+        "scrollScrub": "anim_capsule_matrix_wipe"
+      },
+      "scrollBehavior": {
+        "pinned": true,
+        "scrubDuration": "80vh"
+      },
+      "interactions": [],
+      "responsiveBehavior": {
+        "mobile": {
+          "gridColumns": "repeat(4, 1fr)"
+        }
+      },
+      "dependencies": ["TransitionMatrix"]
+    },
+    {
+      "id": "section_collectibles_carousel",
+      "type": "horizontalFannedShowcase",
+      "order": 5,
+      "purpose": "Showcase the 10,000 avatar collectible assets with an interactive horizontal card fan deck and 10K giant watermark.",
+      "background": {
+        "color": "#DDD8F5",
+        "type": "solidLavender"
+      },
+      "content": {
+        "indexLabel": "• 003",
+        "watermarkText": "10K",
+        "headline": "10,000 UNIQUE DIGITAL COLLECTIBLES.",
+        "categoryLabel": "• INITIAL COLLECTION",
+        "description": "Every Keeper is born, endowed with attributes from a collection of over 400 meticulously hand-painted assets. They are personable, iconic possessions that represent KPR's foundational pillars of evolution, inclusion, and imagination.",
+        "navChevrons": { "prev": "◄", "next": "►" }
+      },
+      "typography": {
+        "index": "labelMono",
+        "watermark": "megaWatermark",
+        "headline": "displayH2",
+        "category": "labelMono",
+        "body": "bodyRegular"
+      },
+      "images": [
+        "asset_card_avatar_01",
+        "asset_card_avatar_02",
+        "asset_card_avatar_03",
+        "asset_card_avatar_04",
+        "asset_card_avatar_05",
+        "asset_card_avatar_06",
+        "asset_card_avatar_07"
+      ],
+      "layout": {
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "140vh",
+        "pin": true
+      },
+      "dimensions": {
+        "cardWidth": "28.0rem",
+        "cardHeight": "38.0rem",
+        "activeCardScale": 1.05
+      },
+      "alignment": "center",
+      "spacing": {
+        "padding": "var(--menu-pad)",
+        "cardGap": "2.4rem"
+      },
+      "animation": {
+        "scrollScrub": "anim_collectibles_fan_spread"
+      },
+      "scrollBehavior": {
+        "pinned": true,
+        "scrubDuration": "140vh"
+      },
+      "interactions": [
+        { "type": "cardHoverLift", "target": "collectibleCard", "scale": 1.04 },
+        { "type": "chevronClickSlide", "target": "cardDeck", "step": "1card" }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "cardWidth": "24.0rem",
+          "cardHeight": "32.0rem",
+          "touchSwipe": true
+        }
+      },
+      "dependencies": ["CollectiblesDeck", "CollectiblesCard", "HudChevronNav"]
+    },
+    {
+      "id": "section_factions_citadel",
+      "type": "folderTabVistaStage",
+      "order": 6,
+      "purpose": "Unveil the floating ring citadel metropolis through a large folder-tab masked viewport.",
+      "background": {
+        "color": "#E5DDF0",
+        "type": "skyHaze"
+      },
+      "content": {
+        "badge": "• FACTIONS"
+      },
+      "typography": {
+        "badge": "labelMono"
+      },
+      "images": ["asset_citadel_ring_metropolis"],
+      "layout": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "height": "100vh"
+      },
+      "dimensions": {
+        "maskWidthDesktop": "110.0rem",
+        "maskHeightDesktop": "64.0rem"
+      },
+      "alignment": "center",
+      "spacing": { "padding": "var(--menu-pad)" },
+      "animation": {
+        "scrollScrub": "anim_citadel_mask_expand"
+      },
+      "scrollBehavior": { "pinned": true, "scrubDuration": "80vh" },
+      "interactions": [],
+      "responsiveBehavior": {
+        "mobile": { "maskWidth": "92vw", "maskHeight": "48.0rem" }
+      },
+      "dependencies": ["FolderTabMask"]
+    },
+    {
+      "id": "section_factions_overlook",
+      "type": "characterOverlookInteractive",
+      "order": 7,
+      "purpose": "Present the two opposing faction leaders on the balcony with an interactive Click & Hold reticle trigger.",
+      "background": {
+        "color": "#EAA899",
+        "type": "sunsetBalconyGradient",
+        "assetRef": "asset_bg_balcony_sunset"
+      },
+      "content": {
+        "indexLabel": "• 002 • FACTIONS",
+        "tagline": "One world, two factions. Divided in belief, united in purpose.",
+        "interactivePrompt": "CLICK & HOLD"
+      },
+      "typography": {
+        "index": "labelMono",
+        "tagline": "bodyLead",
+        "prompt": "labelMono"
+      },
+      "images": [
+        "asset_faction_pink_leader",
+        "asset_faction_silver_warrior"
+      ],
+      "layout": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "height": "120vh",
+        "pin": true
+      },
+      "dimensions": {
+        "reticleDiameter": "10.0rem"
+      },
+      "alignment": "center",
+      "spacing": { "padding": "var(--menu-pad)" },
+      "animation": {
+        "scrollScrub": "anim_overlook_depth_parallax"
+      },
+      "scrollBehavior": { "pinned": true, "scrubDuration": "120vh" },
+      "interactions": [
+        {
+          "type": "pointerHold",
+          "target": "ClickHoldReticle",
+          "holdTimeMs": 1500,
+          "action": "triggerFactionLoreModal"
+        }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "repositionReticle": "centerLow"
+        }
+      },
+      "dependencies": ["ClickHoldReticle", "ParallaxLayer"]
+    },
+    {
+      "id": "section_world_keepers",
+      "type": "brutalistTriptychStage",
+      "order": 8,
+      "purpose": "Deliver climax with the giant 'KEEPERS' brutalist typography, 3 floating perspective cards, and live hacky-text prompt.",
+      "background": {
+        "color": "#FFFFFF",
+        "type": "solidWhite"
+      },
+      "content": {
+        "wordmark": "KEEPERS",
+        "actionLink": "• BECOME A KEEPER",
+        "scramblePrompt": "What path will you forge as you become the Keeper of your destiny?",
+        "cards": [
+          { "label": "• THE WORLD", "imageRef": "asset_card_world_aerial" },
+          { "label": "• THE KEEP", "imageRef": "asset_card_keep_spire" },
+          { "label": "• FACTION", "imageRef": "asset_card_faction_eyes" }
+        ]
+      },
+      "typography": {
+        "wordmark": "megaWatermark",
+        "action": "labelMono",
+        "scramble": "bodyLead",
+        "cardLabels": "labelMono"
+      },
+      "images": [
+        "asset_card_world_aerial",
+        "asset_card_keep_spire",
+        "asset_card_faction_eyes"
+      ],
+      "layout": {
+        "display": "relative",
+        "height": "140vh",
+        "pin": true
+      },
+      "dimensions": {
+        "card1Width": "32.0rem",
+        "card1Height": "38.0rem",
+        "card2Width": "24.0rem",
+        "card2Height": "42.0rem",
+        "card3Width": "36.0rem",
+        "card3Height": "20.0rem"
+      },
+      "alignment": "center",
+      "spacing": { "padding": "var(--menu-pad)" },
+      "animation": {
+        "scrollScrub": "anim_keepers_triptych_float",
+        "typewriter": "anim_become_keeper_scramble"
+      },
+      "scrollBehavior": { "pinned": true, "scrubDuration": "140vh" },
+      "interactions": [
+        { "type": "hoverScramble", "target": "actionLink" }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "stackCardsVertically": true,
+          "wordmarkScale": "140%"
+        }
+      },
+      "dependencies": ["MegaWatermark", "HackyTextScramble", "PerspectiveCard"]
+    },
+    {
+      "id": "section_footer_monoliths",
+      "type": "monolithExitFooter",
+      "order": 9,
+      "purpose": "Conclude the page with 3 rising black monolithic columns, directory links with hover fills, and monumental KPR wordmark.",
+      "background": {
+        "color": "#000000",
+        "type": "solidBlack"
+      },
+      "content": {
+        "sidebarTelemetry": "// INITIALIZING\nNEW FILES IN DATABASE\nSEC_VIDEO_1P",
+        "columns": [
+          {
+            "id": "col_discover",
+            "title": "• DISCOVER MORE",
+            "links": [
+              { "label": "STORY", "href": "#chapter-project" },
+              { "label": "JOURNAL", "href": "/journal" },
+              { "label": "MEDIA", "href": "/media" },
+              { "label": "GALLERY", "href": "/gallery" },
+              { "label": "ABOUT", "href": "/about" },
+              { "label": "CAREERS ↗", "href": "/careers" }
+            ]
+          },
+          {
+            "id": "col_community",
+            "title": "• JOIN THE CONVERSATION",
+            "links": [
+              { "label": "TWITTER", "href": "https://twitter.com/kprverse" },
+              { "label": "DISCORD", "href": "https://discord.gg/kprverse" }
+            ]
+          },
+          {
+            "id": "col_details",
+            "title": "• MORE DETAILS",
+            "contactEmail": "HELLO@KPRVERSE.COM",
+            "ctaButton": "DOWNLOAD BRAND BOOK"
+          }
+        ],
+        "wordmark": "KPR",
+        "legal": ["PRIVACY POLICY", "TERMS OF SERVICE", "LEGAL LICENSE"],
+        "copyright": "© 2022 KPR. ALL RIGHTS RESERVED."
+      },
+      "typography": {
+        "columnTitle": "labelMono",
+        "links": "labelMono",
+        "wordmark": "megaWatermark",
+        "legal": "telemetryMono"
+      },
+      "images": [],
+      "layout": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "height": "100vh"
+      },
+      "dimensions": {
+        "columnHeightDesktop": "35.0rem"
+      },
+      "alignment": "stretch",
+      "spacing": { "padding": "var(--menu-pad)" },
+      "animation": {
+        "scrollScrub": "anim_monolith_columns_rise"
+      },
+      "scrollBehavior": { "pinned": true, "scrubDuration": "60vh" },
+      "interactions": [
+        { "type": "linkHoverFill", "target": "footerLink" }
+      ],
+      "responsiveBehavior": {
+        "mobile": {
+          "columnsStacked": true,
+          "wordmarkHeight": "18vw"
+        }
+      },
+      "dependencies": ["MonolithColumn", "LinkHoverFill", "MegaWordmarkKPR"]
+    }
+  ],
+  "components": [
+    {
+      "name": "TheHudFrame",
+      "path": "components/hud/TheHudFrame.vue",
+      "role": "Global fixed viewport frame overlay with 1px border and reactive dark/light themes",
+      "props": { "currentTheme": "string", "scrollProgress": "number" },
+      "children": ["HudNavTabs", "HudProgressBar", "HudLeftRail", "BtnBurger", "BtnAuth"]
+    },
+    {
+      "name": "HudNavTabs",
+      "path": "components/hud/HudNavTabs.vue",
+      "role": "Horizontal chapter navigation with dynamic active dot and opacity toggling",
+      "props": { "activeTabId": "string", "tabs": "Array" }
+    },
+    {
+      "name": "HudProgressBar",
+      "path": "components/hud/HudProgressBar.vue",
+      "role": "1px horizontal line indicating total scroll percentage",
+      "props": { "progress": "number" }
+    },
+    {
+      "name": "HudLeftRail",
+      "path": "components/hud/HudLeftRail.vue",
+      "role": "Vertical rail housing central crosshair reticle and bottom audio waveform visualizer",
+      "props": { "audioPlaying": "boolean" }
+    },
+    {
+      "name": "FolderTabCard",
+      "path": "components/cards/FolderTabCard.vue",
+      "role": "Card with custom asymmetrical folder-tab notch and rounded borders",
+      "props": { "image": "string", "badge": "string", "alt": "string" }
+    },
+    {
+      "name": "CollectiblesDeck",
+      "path": "components/collectibles/CollectiblesDeck.vue",
+      "role": "Fanned horizontal card deck for the 10,000 digital collectibles",
+      "props": { "cards": "Array", "activeIndex": "number" }
+    },
+    {
+      "name": "ClickHoldReticle",
+      "path": "components/ui/ClickHoldReticle.vue",
+      "role": "Interactive SVG circular radar button requiring 1.5s pointer hold",
+      "props": { "label": "string", "durationMs": "number" },
+      "emits": ["holdComplete"]
+    },
+    {
+      "name": "HackyTextScramble",
+      "path": "components/animation/HackyTextScramble.vue",
+      "role": "Scramble text effect without layout shift using spacer technique",
+      "props": { "text": "string", "trigger": "string", "speed": "number" }
+    },
+    {
+      "name": "LinkHoverFill",
+      "path": "components/animation/LinkHoverFill.vue",
+      "role": "Sliding background fill sweeping left-to-right on link hover",
+      "props": { "href": "string", "accentColor": "string" }
+    },
+    {
+      "name": "MegaWordmark",
+      "path": "components/ui/MegaWordmark.vue",
+      "role": "Full-width brutalist SVG letterforms (KEEPERS, KPR)",
+      "props": { "word": "string", "color": "string" }
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset_hero_protagonist_card",
+      "type": "image/webp",
+      "purpose": "Primary hero visual displaying cyberpunk anime boy with ocular visor and neon fox aura",
+      "location": "/assets/images/hero-protagonist-card.webp",
+      "aspectRatio": "4:5",
+      "desktopUsage": "Center stage in Hero; docks to center in Intro",
+      "mobileUsage": "Scaled 85% in viewport center",
+      "objectFit": "cover",
+      "objectPosition": "center top"
+    },
+    {
+      "id": "asset_bg_lavender_sky",
+      "type": "image/webp",
+      "purpose": "Soft painted lavender background with distant mountain ranges for Hero and Intro",
+      "location": "/assets/images/bg-lavender-sky.webp",
+      "aspectRatio": "16:9",
+      "desktopUsage": "Fixed background behind pinned hero canvas",
+      "mobileUsage": "Cover viewport background",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_video_thumbnail_safezone",
+      "type": "video/mp4",
+      "purpose": "Looping surveillance footage of lone figure running in cyber safezone dome",
+      "location": "/assets/videos/safezone-surveillance.mp4",
+      "aspectRatio": "16:10",
+      "desktopUsage": "Left column of Intro section beneath headline",
+      "mobileUsage": "Centered inline preview",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_spire_warrior",
+      "type": "image/webp",
+      "purpose": "Tall portrait card of armored warrior with energy broadsword overlooking spire",
+      "location": "/assets/images/spire-warrior.webp",
+      "aspectRatio": "9:16",
+      "desktopUsage": "Right column of Intro section with subtle perspective tilt",
+      "mobileUsage": "Stacked beneath narrative copy",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_bg_sunset_vista",
+      "type": "image/webp",
+      "purpose": "Warm peach and terracotta painted mountain panoramic landscape",
+      "location": "/assets/images/sunset-mountain-vista.webp",
+      "aspectRatio": "21:9",
+      "desktopUsage": "Full-bleed background across 160vh telemetry chapter",
+      "mobileUsage": "Cover background with horizontal scroll clipping",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_drone_aircraft",
+      "type": "image/svg+xml",
+      "purpose": "High-altitude surveillance drone with motion trajectory line",
+      "location": "/assets/vectors/drone-aircraft.svg",
+      "aspectRatio": "4:1",
+      "desktopUsage": "Animates along path at top-right of mountain vista",
+      "mobileUsage": "Scaled 70% at top-right",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_wireframe_terrain_mesh",
+      "type": "image/svg+xml",
+      "purpose": "3D topographical wireframe contour diagram of mountain elevation",
+      "location": "/assets/vectors/wireframe-terrain-mesh.svg",
+      "aspectRatio": "16:7",
+      "desktopUsage": "Anchored bottom-right in Telemetry chapter with cyan stroke",
+      "mobileUsage": "Hidden on mobile viewports",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_01",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Platinum hair with lilac flame aura",
+      "location": "/assets/images/collectibles/card-01.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 1 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_02",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Tactical respirator and green data card",
+      "location": "/assets/images/collectibles/card-02.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 2 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_03",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Pink twin-tails with cyber cat headphones",
+      "location": "/assets/images/collectibles/card-03.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 3 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_04",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Tactical headband and cybernetic eye visor",
+      "location": "/assets/images/collectibles/card-04.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 4 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_05",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Beanie and cyber samurai collar",
+      "location": "/assets/images/collectibles/card-05.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 5 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_06",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Bubblegum and tactical bun hairstyle",
+      "location": "/assets/images/collectibles/card-06.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 6 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_avatar_07",
+      "type": "image/webp",
+      "purpose": "Keeper collectible: Horned oni mask with purple energy smoke",
+      "location": "/assets/images/collectibles/card-07.webp",
+      "aspectRatio": "1:1",
+      "desktopUsage": "Card 7 in horizontal fanned carousel",
+      "mobileUsage": "Carousel slide item",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_citadel_ring_metropolis",
+      "type": "image/webp",
+      "purpose": "Cinematic wide vista of dual-tower ring citadel with energy beam and hovercrafts",
+      "location": "/assets/images/citadel-ring-metropolis.webp",
+      "aspectRatio": "16:9",
+      "desktopUsage": "Inside folder-tab window mask in Citadel section",
+      "mobileUsage": "Inside folder-tab window mask scaled 90vw",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_bg_balcony_sunset",
+      "type": "image/webp",
+      "purpose": "High-altitude rooftop balcony overlooking the Keep citadel during sunset",
+      "location": "/assets/images/balcony-overlook.webp",
+      "aspectRatio": "16:9",
+      "desktopUsage": "Background layer of Factions section",
+      "mobileUsage": "Cover background layer",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_faction_pink_leader",
+      "type": "image/webp",
+      "purpose": "Foreground faction leader: Pink spiky hair, grinning with cyber collar",
+      "location": "/assets/images/faction-pink-leader.webp",
+      "aspectRatio": "3:4",
+      "desktopUsage": "Foreground right of Balcony section",
+      "mobileUsage": "Foreground centered",
+      "objectFit": "contain",
+      "objectPosition": "right bottom"
+    },
+    {
+      "id": "asset_faction_silver_warrior",
+      "type": "image/webp",
+      "purpose": "Midground faction warrior: Silver hair with massive staff on elevated balcony",
+      "location": "/assets/images/faction-silver-warrior.webp",
+      "aspectRatio": "2:3",
+      "desktopUsage": "Midground left on elevated balcony",
+      "mobileUsage": "Positioned top-left behind leader",
+      "objectFit": "contain",
+      "objectPosition": "left bottom"
+    },
+    {
+      "id": "asset_card_world_aerial",
+      "type": "image/webp",
+      "purpose": "Aerial top-down camera perspective of the circular citadel spire",
+      "location": "/assets/images/card-world-aerial.webp",
+      "aspectRatio": "4:5",
+      "desktopUsage": "Card 1 in World triptych overlapping 'KEEPERS'",
+      "mobileUsage": "Stacked item 1",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_keep_spire",
+      "type": "image/webp",
+      "purpose": "Vertical elevation view of the crystal energy tower spire reaching into the sky",
+      "location": "/assets/images/card-keep-spire.webp",
+      "aspectRatio": "9:16",
+      "desktopUsage": "Card 2 in World triptych offset right",
+      "mobileUsage": "Stacked item 2",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    },
+    {
+      "id": "asset_card_faction_eyes",
+      "type": "image/webp",
+      "purpose": "Cinematic letterbox close-up of fierce anime character eyes with glowing visor",
+      "location": "/assets/images/card-faction-eyes.webp",
+      "aspectRatio": "16:6",
+      "desktopUsage": "Card 3 in World triptych offset bottom center",
+      "mobileUsage": "Stacked item 3",
+      "objectFit": "cover",
+      "objectPosition": "center"
+    }
+  ],
+  "animations": [
+    {
+      "id": "anim_hero_card_shrink_and_dock",
+      "trigger": "scrollScrub",
+      "target": "#hero-protagonist-card",
+      "initialState": { "scale": 1.0, "x": "0vw", "y": "0vh", "opacity": 1.0 },
+      "finalState": { "scale": 0.55, "x": "16vw", "y": "36vh", "opacity": 1.0 },
+      "duration": "100vh",
+      "delay": 0,
+      "easing": "power2.out",
+      "direction": "diagonalDownRight",
+      "scrubBehavior": { "start": "top top", "end": "+=100%", "scrub": 0.5 },
+      "viewportBehavior": "pinnedUntilDocked"
+    },
+    {
+      "id": "anim_intro_columns_stagger_enter",
+      "trigger": "scrollTrigger",
+      "target": ".intro-col",
+      "initialState": { "opacity": 0, "y": 60 },
+      "finalState": { "opacity": 1, "y": 0 },
+      "duration": 0.8,
+      "delay": 0.1,
+      "easing": "power3.out",
+      "direction": "up",
+      "scrubBehavior": null,
+      "viewportBehavior": "staggeredByColumn0.15s"
+    },
+    {
+      "id": "anim_telemetry_narrative_scrub",
+      "trigger": "scrollScrub",
+      "target": ".telemetry-narrative-group",
+      "initialState": { "opacity": 0, "y": 40 },
+      "finalState": { "opacity": 1, "y": 0 },
+      "duration": "80vh",
+      "delay": 0,
+      "easing": "power1.out",
+      "direction": "up",
+      "scrubBehavior": { "start": "top top", "end": "+=80%", "scrub": 1.0 },
+      "viewportBehavior": "pinnedFade"
+    },
+    {
+      "id": "anim_aircraft_flight_path",
+      "trigger": "continuous",
+      "target": "#drone-aircraft-vector",
+      "initialState": { "x": "-10vw", "y": "0px" },
+      "finalState": { "x": "40vw", "y": "-20px" },
+      "duration": 18.0,
+      "delay": 0,
+      "easing": "linear",
+      "direction": "topRight",
+      "scrubBehavior": null,
+      "viewportBehavior": "loopInfinite"
+    },
+    {
+      "id": "anim_capsule_matrix_wipe",
+      "trigger": "scrollScrub",
+      "target": ".matrix-capsule-col",
+      "initialState": { "yPercent": 100 },
+      "finalState": { "yPercent": -100 },
+      "duration": "80vh",
+      "delay": 0,
+      "easing": "power2.inOut",
+      "direction": "verticalCurtain",
+      "scrubBehavior": { "start": "top bottom", "end": "bottom top", "scrub": 0.8 },
+      "viewportBehavior": "staggeredColumnWipe"
+    },
+    {
+      "id": "anim_collectibles_fan_spread",
+      "trigger": "scrollScrub",
+      "target": ".collectible-card-item",
+      "initialState": { "xPercent": 50, "scale": 0.9, "opacity": 0.7 },
+      "finalState": { "xPercent": 0, "scale": 1.0, "opacity": 1.0 },
+      "duration": "140vh",
+      "delay": 0,
+      "easing": "power2.out",
+      "direction": "horizontalSpread",
+      "scrubBehavior": { "start": "top top", "end": "+=120%", "scrub": 1.2 },
+      "viewportBehavior": "pinnedHorizontalTrack"
+    },
+    {
+      "id": "anim_citadel_mask_expand",
+      "trigger": "scrollScrub",
+      "target": "#citadel-folder-tab-mask",
+      "initialState": { "scale": 0.85, "borderRadius": "40px" },
+      "finalState": { "scale": 1.0, "borderRadius": "20px" },
+      "duration": "80vh",
+      "delay": 0,
+      "easing": "power2.out",
+      "direction": "scaleUp",
+      "scrubBehavior": { "start": "top center", "end": "center center", "scrub": 0.6 },
+      "viewportBehavior": "pinnedScale"
+    },
+    {
+      "id": "anim_overlook_depth_parallax",
+      "trigger": "scrollScrub",
+      "target": ".overlook-character-fg",
+      "initialState": { "y": 60, "scale": 1.0 },
+      "finalState": { "y": -40, "scale": 1.05 },
+      "duration": "120vh",
+      "delay": 0,
+      "easing": "none",
+      "direction": "parallaxUp",
+      "scrubBehavior": { "start": "top top", "end": "+=100%", "scrub": true },
+      "viewportBehavior": "multiDepthScrub"
+    },
+    {
+      "id": "anim_become_keeper_scramble",
+      "trigger": "viewportEntry",
+      "target": "#become-keeper-scramble-text",
+      "initialState": { "text": "What path?..." },
+      "finalState": { "text": "What path will you forge as you become the Keeper of your destiny?" },
+      "duration": 1.2,
+      "delay": 0.3,
+      "easing": "steps(24)",
+      "direction": "scrambleTypewriter",
+      "scrubBehavior": null,
+      "viewportBehavior": "playOnceOnEnter"
+    },
+    {
+      "id": "anim_monolith_columns_rise",
+      "trigger": "scrollScrub",
+      "target": ".monolith-column-box",
+      "initialState": { "yPercent": 100 },
+      "finalState": { "yPercent": 0 },
+      "duration": "60vh",
+      "delay": 0,
+      "easing": "power3.out",
+      "direction": "up",
+      "scrubBehavior": { "start": "top bottom", "end": "bottom bottom", "scrub": 0.7 },
+      "viewportBehavior": "staggeredRise0.1s"
+    },
+    {
+      "id": "anim_progress_bar_horizontal",
+      "trigger": "scrollScrub",
+      "target": "#hud-progress-line-bar",
+      "initialState": { "scaleX": 0 },
+      "finalState": { "scaleX": 1.0 },
+      "duration": "fullPageScroll",
+      "delay": 0,
+      "easing": "linear",
+      "direction": "horizontalScale",
+      "scrubBehavior": { "start": "top top", "end": "bottom bottom", "scrub": 0.1 },
+      "viewportBehavior": "persistentTop"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "int_nav_tab_jump",
+      "target": ".hud-nav-tab",
+      "event": "click",
+      "action": "smoothScrollToTarget",
+      "feedback": { "toggleActiveDot": true, "updateUrlHash": false }
+    },
+    {
+      "id": "int_click_and_hold_radar",
+      "target": "#click-hold-reticle",
+      "event": "pointerdown / pointerup",
+      "action": "fillRadarRing",
+      "parameters": {
+        "holdDurationMs": 1500,
+        "onComplete": "openFactionModal",
+        "onCancel": "resetRadarFill"
+      }
+    },
+    {
+      "id": "int_collectibles_card_hover",
+      "target": ".collectible-card-item",
+      "event": "mouseenter / mouseleave",
+      "action": "elevateAndGlow",
+      "parameters": {
+        "transform": "translateY(-12px) scale(1.04)",
+        "boxShadow": "0 16px 36px rgba(0, 0, 0, 0.4)",
+        "duration": "0.3s"
+      }
+    },
+    {
+      "id": "int_audio_visualizer_toggle",
+      "target": "#btn-audio-toggle",
+      "event": "click",
+      "action": "toggleAmbientAudioNode",
+      "feedback": {
+        "animateWaveformBars": true,
+        "fadeGainRamp": "1.2s"
+      }
+    },
+    {
+      "id": "int_link_sliding_fill",
+      "target": ".link-hover-fill",
+      "event": "mouseenter / mouseleave",
+      "action": "slideBackgroundFill",
+      "parameters": {
+        "fillColor": "#FFFFFF",
+        "textColor": "#000000",
+        "ease": "cubic-bezier(0.16, 1, 0.3, 1)"
+      }
+    }
+  ],
+  "responsive": {
+    "breakpoints": {
+      "mobile": "320px to 767px",
+      "tablet": "768px to 1023px",
+      "desktop": "1024px to 1599px",
+      "wide": "1600px+"
+    },
+    "rules": {
+      "mobile": {
+        "disableLeftRail": true,
+        "collapseNavTabsToHamburger": true,
+        "stackAsymmetricColumnsVertically": true,
+        "enableHorizontalTouchSwipeForCollectibles": true,
+        "scaleMegaWatermarksToContainerWidth": true
+      },
+      "desktop": {
+        "persistentHudFrame": true,
+        "enableMouseParallax": true,
+        "pinnedStageMultiPhaseScrub": true
+      }
+    }
+  },
+  "content": {
+    "siteTitle": "KPR | Story",
+    "metaDescription": "Enter New Eden. A cinematic world of Keepers, digital collectibles, and opposing factions struggling for the future of humanity.",
+    "chapters": [
+      { "id": "project", "number": "001", "name": "PROJECT", "headline": "A FAMILIAR WORLD... SET ON A DIFFERENT PATH." },
+      { "id": "keep", "number": "002", "name": "THE KEEP", "headline": "YOU ARE A KEEPER: AN AGENT OF POWER AND CHANGE IN THIS WORLD." },
+      { "id": "collectibles", "number": "003", "name": "COLLECTION", "headline": "10,000 UNIQUE DIGITAL COLLECTIBLES." },
+      { "id": "factions", "number": "002", "name": "FACTIONS", "headline": "One world, two factions. Divided in belief, united in purpose." },
+      { "id": "world", "number": "004", "name": "THE WORLD", "headline": "What path will you forge as you become the Keeper of your destiny?" }
+    ],
+    "footer": {
+      "wordmark": "KPR",
+      "copyright": "© 2022 KPR. ALL RIGHTS RESERVED."
+    }
+  },
+  "routing": {
+    "mode": "singlePageVirtualScroll",
+    "hashAnchors": {
+      "#chapter-project": "section_hero_genesis",
+      "#chapter-keep": "section_keep_telemetry",
+      "#chapter-factions": "section_factions_citadel",
+      "#chapter-world": "section_world_keepers"
+    }
+  },
+  "implementation": {
+    "framework": "Nuxt 3 (Vue 3, <script setup lang=\"ts\">)",
+    "styling": "Vanilla Scoped CSS with CSS Custom Properties",
+    "smoothScrollEngine": "Lenis",
+    "timelineOrchestrator": "GSAP 3 with ScrollTrigger",
+    "webGlEngine": "Three.js (for atmospheric depth, particles, and wireframe contour mesh)",
+    "audioArchitecture": "Web Audio API Harmonic Drone Synthesizer Node"
+  }
+}

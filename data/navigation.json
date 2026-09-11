@@ -1,0 +1,16 @@
+{
+  "tabs": [
+    { "id": "project", "label": "PROJECT", "target": "#chapter-project", "order": 1 },
+    { "id": "keep", "label": "THE KEEP", "target": "#chapter-keep", "order": 2 },
+    { "id": "factions", "label": "FACTIONS", "target": "#chapter-factions", "order": 3 },
+    { "id": "world", "label": "THE WORLD", "target": "#chapter-world", "order": 4 }
+  ],
+  "auth": {
+    "label": "SIGN IN",
+    "href": "#auth"
+  },
+  "hud": {
+    "audioCode": "[01]",
+    "crosshairIcon": "diamond"
+  }
+}

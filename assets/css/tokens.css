@@ -1,0 +1,62 @@
+:root {
+  /* Layout Proportions & HUD Dimensions (Source of Truth) */
+  --menu-pad: 2.0rem;
+  --menu-height: 5.6rem;
+  --menu-width: 6.7rem;
+  --menu-radius: 2.0rem;
+  --line-thickness: 1px;
+  --content-max-width: 144.0rem;
+
+  /* Color Palette - KPRverse Spec */
+  --color-bg-lavender: #EAE6F8;
+  --color-bg-lavender-dark: #DDD8F5;
+  --color-bg-white: #FFFFFF;
+  --color-bg-dark: #000000;
+  --color-bg-sunset: #C88470;
+  --color-bg-sunset-secondary: #936068;
+
+  /* Theme Dynamic Variables (Defaults to Light/Lavender) */
+  --theme-bg: var(--color-bg-lavender);
+  --theme-text: #000000;
+  --theme-text-muted: rgba(0, 0, 0, 0.45);
+  --theme-text-faded: rgba(0, 0, 0, 0.25);
+  --theme-lines: rgba(0, 0, 0, 0.12);
+  --theme-line-outer: rgba(0, 0, 0, 0.18);
+  --theme-btn-bg: #000000;
+  --theme-btn-text: #FFFFFF;
+
+  /* Accents */
+  --color-accent-green: #C0FB50;
+  --color-accent-blue: #8CA6FF;
+  --color-accent-lavender: #B39DDB;
+
+  /* Typography Families */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Z-Index Layers */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-overlays: 10;
+  --z-hud-frame: 50;
+  --z-menu-drawer: 60;
+  --z-preloader: 100;
+
+  /* Smooth Transitions & Easing */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s var(--ease-cinematic);
+  --transition-theme: background-color 0.5s var(--ease-cinematic), color 0.5s var(--ease-cinematic), border-color 0.5s var(--ease-cinematic);
+}
+
+/* Dark Theme Overrides for Sections like Sunset, Black Footer, and Dark Chapters */
+.theme-dark {
+  --theme-bg: var(--color-bg-dark);
+  --theme-text: #FFFFFF;
+  --theme-text-muted: rgba(255, 255, 255, 0.45);
+  --theme-text-faded: rgba(255, 255, 255, 0.25);
+  --theme-lines: rgba(255, 255, 255, 0.15);
+  --theme-line-outer: rgba(255, 255, 255, 0.22);
+  --theme-btn-bg: #FFFFFF;
+  --theme-btn-text: #000000;
+}

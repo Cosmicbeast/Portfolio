@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Display Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: var(--theme-text);
+  text-transform: uppercase;
+}
+
+.mega-watermark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(6.0rem, 14vw, 20.0rem);
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.display-h1 {
+  font-size: clamp(3.2rem, 5.5vw, 6.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.display-h2 {
+  font-size: clamp(2.4rem, 3.8vw, 4.4rem);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+}
+
+p {
+  color: var(--theme-text-muted);
+  font-size: clamp(1.4rem, 1.6vw, 1.7rem);
+  line-height: 1.6;
+}
+
+/* Monospace HUD & Telemetry Styles */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--theme-text-muted);
+}
+
+.label-mono.active {
+  color: var(--theme-text);
+}
+
+.telemetry-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--theme-text-muted);
+}
