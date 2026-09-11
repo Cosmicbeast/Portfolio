@@ -3,6 +3,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const footerRef = ref<HTMLElement | null>(null)
@@ -10,6 +11,7 @@ const monolith1Ref = ref<HTMLElement | null>(null)
 const monolith2Ref = ref<HTMLElement | null>(null)
 const monolith3Ref = ref<HTMLElement | null>(null)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 const footer = storyData.chapters.footer
@@ -31,26 +33,8 @@ onMounted(() => {
       }
     })
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
-
-    // PRIMARY: Rising Monolith Columns scrub
-    gsap.fromTo(
-      '.monolith-column',
-      { y: 60, opacity: 0 },
-      {
-        scrollTrigger: {
-          trigger: footerRef.value,
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: 0.8
-        },
-        y: 0,
-        opacity: 1,
-        stagger: 0.15,
-        ease: 'power2.out'
-      }
-    )
+    // Cinematic scroll-triggered depth parallax driven by central config
+    initSectionParallax('site-footer', footerRef.value)
   }, footerRef.value)
 })
 

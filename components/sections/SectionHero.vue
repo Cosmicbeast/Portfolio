@@ -3,10 +3,12 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FolderTabCard from '~/components/cards/FolderTabCard.vue'
+import { useParallax } from '~/composables/useParallax'
 
 const heroStageRef = ref<HTMLElement | null>(null)
 const bgLayerRef = ref<HTMLElement | null>(null)
 const centerpieceRef = ref<HTMLElement | null>(null)
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
@@ -109,33 +111,8 @@ onMounted(() => {
       0.65
     )
 
-    // Cinematic Scroll-Triggered Parallax Scrub for Hero Exit
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!prefersReducedMotion && heroStageRef.value) {
-      gsap.to('.stage-hero__centerpiece', {
-        scrollTrigger: {
-          trigger: heroStageRef.value,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.8
-        },
-        y: 60,
-        scale: 0.88,
-        opacity: 0.25,
-        ease: 'power2.inOut'
-      })
-
-      gsap.to('.hero-bg-mist', {
-        scrollTrigger: {
-          trigger: heroStageRef.value,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.6
-        },
-        opacity: 1,
-        y: -30
-      })
-    }
+    // Layered Parallax System driven by parallax-config.json
+    initSectionParallax('chapter-project', heroStageRef.value)
   }, heroStageRef.value ?? undefined)
 })
 

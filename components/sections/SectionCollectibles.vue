@@ -3,12 +3,14 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const deckRef = ref<HTMLElement | null>(null)
 const activeIndex = ref(0)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 const cards = storyData.chapters.collectibles.cards
@@ -42,40 +44,8 @@ onMounted(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
-    // PRIMARY: Watermark 10K scale scrub
-    gsap.fromTo(
-      '.collectibles-watermark',
-      { scale: 0.92, opacity: 0.08 },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 1
-        },
-        scale: 1.08,
-        opacity: 0.16,
-        ease: 'none'
-      }
-    )
-
-    // SECONDARY: Horizontal fan spread of collectible cards
-    gsap.fromTo(
-      '.collectible-card-item',
-      { xPercent: 25, opacity: 0.6 },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: 'top 60%',
-          end: 'center center',
-          scrub: 0.8
-        },
-        xPercent: 0,
-        opacity: 1,
-        stagger: 0.08,
-        ease: 'power2.out'
-      }
-    )
+    // Layered Parallax System driven by parallax-config.json
+    initSectionParallax('chapter-collectibles', sectionRef.value)
   }, sectionRef.value)
 })
 

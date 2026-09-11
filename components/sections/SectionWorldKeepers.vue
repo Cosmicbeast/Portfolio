@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AssetSlot from '~/components/ui/AssetSlot.vue'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -11,6 +12,7 @@ const card1Ref = ref<HTMLElement | null>(null)
 const card2Ref = ref<HTMLElement | null>(null)
 const card3Ref = ref<HTMLElement | null>(null)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
@@ -31,63 +33,8 @@ onMounted(() => {
       }
     })
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
-
-    // Differential Parallax on Triptych Cards
-    if (card1Ref.value) {
-      gsap.fromTo(
-        card1Ref.value,
-        { y: 80, rotateZ: -2 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.8
-          },
-          y: -40,
-          rotateZ: 0,
-          ease: 'none'
-        }
-      )
-    }
-
-    if (card2Ref.value) {
-      gsap.fromTo(
-        card2Ref.value,
-        { y: 40, rotateZ: 3 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.2
-          },
-          y: -70,
-          rotateZ: 0,
-          ease: 'none'
-        }
-      )
-    }
-
-    if (card3Ref.value) {
-      gsap.fromTo(
-        card3Ref.value,
-        { y: 110, rotateZ: -1 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.0
-          },
-          y: -20,
-          rotateZ: 0,
-          ease: 'none'
-        }
-      )
-    }
+    // Cinematic scroll-triggered depth parallax driven by central config
+    initSectionParallax('chapter-world', sectionRef.value)
   }, sectionRef.value)
 })
 

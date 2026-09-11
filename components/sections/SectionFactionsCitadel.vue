@@ -4,11 +4,13 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AssetSlot from '~/components/ui/AssetSlot.vue'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const maskRef = ref<HTMLElement | null>(null)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
@@ -32,24 +34,8 @@ onMounted(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
-    // PRIMARY: Folder-tab window mask scale expansion on scroll scrub
-    if (maskRef.value) {
-      gsap.fromTo(
-        maskRef.value,
-        { scale: 0.84, borderRadius: '4rem' },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 70%',
-            end: 'center center',
-            scrub: 0.8
-          },
-          scale: 1.0,
-          borderRadius: '2rem',
-          ease: 'power2.out'
-        }
-      )
-    }
+    // Layered Parallax System driven by parallax-config.json
+    initSectionParallax('chapter-factions', sectionRef.value)
   }, sectionRef.value)
 })
 

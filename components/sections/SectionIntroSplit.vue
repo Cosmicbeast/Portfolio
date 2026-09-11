@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FolderTabCard from '~/components/cards/FolderTabCard.vue'
 import AssetSlot from '~/components/ui/AssetSlot.vue'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -12,6 +13,7 @@ const storyColRef = ref<HTMLElement | null>(null)
 const guardianColRef = ref<HTMLElement | null>(null)
 const videoPillRef = ref<HTMLElement | null>(null)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
@@ -54,41 +56,8 @@ onMounted(() => {
       }
     )
 
-    // SECONDARY: Differential Parallax on Tall Spire Guardian (moves faster than scroll)
-    if (guardianColRef.value) {
-      gsap.fromTo(
-        guardianColRef.value,
-        { y: 50 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.8
-          },
-          y: -50,
-          ease: 'none'
-        }
-      )
-    }
-
-    // TERTIARY: Gentle vertical drift on safezone media pill
-    if (videoPillRef.value) {
-      gsap.fromTo(
-        videoPillRef.value,
-        { y: 15 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1
-          },
-          y: -15,
-          ease: 'none'
-        }
-      )
-    }
+    // Layered Parallax System driven by parallax-config.json
+    initSectionParallax('chapter-intro', sectionRef.value)
   }, sectionRef.value)
 })
 

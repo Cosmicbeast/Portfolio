@@ -1,0 +1,261 @@
+{
+  "parallax": {
+    "enabled": true,
+    "settings": {
+      "desktopOnly": false,
+      "mobileScaleFactor": 0.35,
+      "defaultScrub": 0.8,
+      "ease": "none"
+    },
+    "sections": [
+      {
+        "sectionId": "chapter-project",
+        "trigger": "#chapter-project",
+        "start": "top top",
+        "end": "bottom top",
+        "scrub": 0.8,
+        "layers": [
+          {
+            "id": "hero-bg-layer",
+            "target": ".hero-bg-layer",
+            "type": "background",
+            "speed": 0.06,
+            "to": { "yPercent": 8 },
+            "ease": "none"
+          },
+          {
+            "id": "hero-bg-mist",
+            "target": ".hero-bg-mist",
+            "type": "atmosphere",
+            "speed": 0.10,
+            "to": { "y": -28, "opacity": 1 },
+            "ease": "none"
+          },
+          {
+            "id": "hero-centerpiece",
+            "target": ".stage-hero__centerpiece",
+            "type": "foreground-artwork",
+            "speed": 0.14,
+            "to": { "y": 45, "scale": 0.92, "opacity": 0.35 },
+            "ease": "power2.inOut"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-intro",
+        "trigger": "#chapter-intro",
+        "start": "top bottom",
+        "end": "bottom top",
+        "scrub": 0.8,
+        "layers": [
+          {
+            "id": "intro-media-pill",
+            "target": ".intro-media-pill",
+            "type": "secondary-artwork",
+            "speed": 0.08,
+            "from": { "y": 16 },
+            "to": { "y": -16 },
+            "ease": "none"
+          },
+          {
+            "id": "intro-center-card",
+            "target": ".intro-col--center",
+            "type": "midground-card",
+            "speed": 0.06,
+            "from": { "y": 24 },
+            "to": { "y": -24 },
+            "ease": "none"
+          },
+          {
+            "id": "intro-spire-guardian",
+            "target": ".spire-warrior-card",
+            "type": "foreground-tall-artwork",
+            "speed": 0.16,
+            "from": { "y": 48 },
+            "to": { "y": -48 },
+            "ease": "none"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-keep",
+        "trigger": "#chapter-keep",
+        "start": "top bottom",
+        "end": "bottom top",
+        "scrub": 1.0,
+        "layers": [
+          {
+            "id": "keep-sunset-haze",
+            "target": ".sunset-haze-grad",
+            "type": "background",
+            "speed": 0.05,
+            "from": { "yPercent": -6 },
+            "to": { "yPercent": 6 },
+            "ease": "none"
+          },
+          {
+            "id": "keep-drone-aircraft",
+            "target": ".drone-aircraft",
+            "type": "decorative-flight",
+            "speed": 0.12,
+            "from": { "x": "0vw", "y": "0px" },
+            "to": { "x": "28vw", "y": "-28px" },
+            "ease": "none"
+          },
+          {
+            "id": "keep-headline",
+            "target": ".telemetry-headline",
+            "type": "typography",
+            "speed": 0.06,
+            "from": { "y": 36, "opacity": 0.25 },
+            "to": { "y": 0, "opacity": 1 },
+            "start": "top 65%",
+            "end": "center center",
+            "scrub": 0.8,
+            "ease": "power2.out"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-collectibles",
+        "trigger": "#chapter-collectibles",
+        "start": "top 80%",
+        "end": "bottom 20%",
+        "scrub": 1.0,
+        "layers": [
+          {
+            "id": "collectibles-10k-watermark",
+            "target": ".collectibles-watermark",
+            "type": "watermark-typography",
+            "speed": 0.06,
+            "from": { "scale": 0.94, "opacity": 0.08, "y": 20 },
+            "to": { "scale": 1.06, "opacity": 0.14, "y": -20 },
+            "ease": "none"
+          },
+          {
+            "id": "collectibles-deck-fan",
+            "target": ".collectible-card-item",
+            "type": "foreground-cards",
+            "speed": 0.08,
+            "from": { "xPercent": 18, "opacity": 0.65 },
+            "to": { "xPercent": 0, "opacity": 1 },
+            "start": "top 65%",
+            "end": "center center",
+            "scrub": 0.8,
+            "stagger": 0.08,
+            "ease": "power2.out"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-factions",
+        "trigger": "#chapter-factions",
+        "start": "top 70%",
+        "end": "center center",
+        "scrub": 0.8,
+        "layers": [
+          {
+            "id": "citadel-mask-window",
+            "target": ".citadel-mask-window",
+            "type": "mask-window",
+            "speed": 0.10,
+            "from": { "scale": 0.86, "borderRadius": "3.6rem" },
+            "to": { "scale": 1.0, "borderRadius": "2.0rem" },
+            "ease": "power2.out"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-factions-overlook",
+        "trigger": "#chapter-factions-overlook",
+        "start": "top bottom",
+        "end": "bottom top",
+        "scrub": 1.0,
+        "layers": [
+          {
+            "id": "overlook-character-bg",
+            "target": ".overlook-character-bg",
+            "type": "midground-character",
+            "speed": 0.08,
+            "from": { "y": 24 },
+            "to": { "y": -24 },
+            "ease": "none"
+          },
+          {
+            "id": "overlook-character-fg",
+            "target": ".overlook-character-fg",
+            "type": "foreground-character",
+            "speed": 0.15,
+            "from": { "y": 45 },
+            "to": { "y": -40 },
+            "ease": "none"
+          }
+        ]
+      },
+      {
+        "sectionId": "chapter-world",
+        "trigger": "#chapter-world",
+        "start": "top bottom",
+        "end": "bottom top",
+        "scrub": 1.0,
+        "layers": [
+          {
+            "id": "keepers-wordmark",
+            "target": ".keepers-wordmark",
+            "type": "watermark-typography",
+            "speed": 0.04,
+            "from": { "y": 30 },
+            "to": { "y": -30 },
+            "ease": "none"
+          },
+          {
+            "id": "keepers-card-1",
+            "target": ".card--world",
+            "type": "triptych-card-1",
+            "speed": 0.09,
+            "from": { "y": 55, "rotateZ": -1.5 },
+            "to": { "y": -30, "rotateZ": 0 },
+            "ease": "none"
+          },
+          {
+            "id": "keepers-card-2",
+            "target": ".card--keep",
+            "type": "triptych-card-2",
+            "speed": 0.14,
+            "from": { "y": 35, "rotateZ": 2 },
+            "to": { "y": -55, "rotateZ": 0 },
+            "ease": "none"
+          },
+          {
+            "id": "keepers-card-3",
+            "target": ".card--faction",
+            "type": "triptych-card-3",
+            "speed": 0.08,
+            "from": { "y": 65, "rotateZ": -1 },
+            "to": { "y": -20, "rotateZ": 0 },
+            "ease": "none"
+          }
+        ]
+      },
+      {
+        "sectionId": "site-footer",
+        "trigger": "#site-footer",
+        "start": "top 80%",
+        "end": "top 35%",
+        "scrub": 0.8,
+        "layers": [
+          {
+            "id": "monolith-columns",
+            "target": ".monolith-column",
+            "type": "rising-monoliths",
+            "speed": 0.10,
+            "from": { "y": 50, "opacity": 0 },
+            "to": { "y": 0, "opacity": 1 },
+            "stagger": 0.12,
+            "ease": "power2.out"
+          }
+        ]
+      }
+    ]
+  }
+}

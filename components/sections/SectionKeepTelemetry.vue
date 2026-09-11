@@ -3,6 +3,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -10,6 +11,7 @@ const headlineRef = ref<HTMLElement | null>(null)
 const subheadlineRef = ref<HTMLElement | null>(null)
 const droneRef = ref<HTMLElement | null>(null)
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
@@ -41,24 +43,8 @@ onMounted(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
-    // PRIMARY: Scroll scrubbed reveal of monumental philosophical headline
-    if (headlineRef.value) {
-      gsap.fromTo(
-        headlineRef.value,
-        { opacity: 0.2, y: 50 },
-        {
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 60%',
-            end: 'center center',
-            scrub: 0.8
-          },
-          opacity: 1,
-          y: 0,
-          ease: 'power2.out'
-        }
-      )
-    }
+    // Layered Parallax System driven by parallax-config.json
+    initSectionParallax('chapter-keep', sectionRef.value)
 
     if (subheadlineRef.value) {
       gsap.fromTo(
@@ -76,21 +62,6 @@ onMounted(() => {
           ease: 'power2.out'
         }
       )
-    }
-
-    // SECONDARY: High-altitude drone aircraft flight trajectory
-    if (droneRef.value) {
-      gsap.to(droneRef.value, {
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.2
-        },
-        x: '35vw',
-        y: '-30px',
-        ease: 'none'
-      })
     }
 
     // TERTIARY: Contour wireframe pulse / sweep

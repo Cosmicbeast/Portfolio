@@ -3,6 +3,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useStoryState } from '~/composables/useStoryState'
+import { useParallax } from '~/composables/useParallax'
 import storyData from '~/data/story.json'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -11,6 +12,7 @@ const isHolding = ref(false)
 const holdUnlocked = ref(false)
 let holdTimer: ReturnType<typeof setInterval> | null = null
 const { setChapter, setTheme } = useStoryState()
+const { initSectionParallax } = useParallax()
 let ctx: gsap.Context | null = null
 
 const startHold = () => {
@@ -61,39 +63,8 @@ onMounted(() => {
       }
     })
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
-
-    // Differential Parallax on Characters
-    gsap.fromTo(
-      '.overlook-character-fg',
-      { y: 50 },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.8
-        },
-        y: -40,
-        ease: 'none'
-      }
-    )
-
-    gsap.fromTo(
-      '.overlook-character-bg',
-      { y: 25 },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.value,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.2
-        },
-        y: -20,
-        ease: 'none'
-      }
-    )
+    // Cinematic scroll-triggered depth parallax driven by central config
+    initSectionParallax('chapter-factions-overlook', sectionRef.value)
   }, sectionRef.value)
 })
 
